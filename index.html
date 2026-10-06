@@ -309,7 +309,7 @@ nav.tabs { position: fixed; inset-inline: 0; bottom: 0; background: var(--bg); b
     return { v: 2, updatedAt: 0, startDate: t, rebuildUntil: addDays(t, 14),
       set: { shift: 'early', off: [5, 6], perWeek: 4, tAfter: '19:00', tBefore: '09:30', tOff: '10:00' },
       prof: { w: 86, h: 181, a: 23, goal: 'recomp', meals: 4 },
-      gyms: [{ id: 'g1', name: 'My gym' }], gym: 'g1',
+      gyms: [{ id: 'g1', name: 'My gym' }], gym: 'g1', theme: 'light',
       sessions: [], draft: null, weights: [], measures: [] };
   }
   function migrate(o) {
@@ -766,6 +766,7 @@ nav.tabs { position: fixed; inset-inline: 0; bottom: 0; background: var(--bg); b
       '<div class="set-row stack"><span>Days off</span><div class="dayseg">' + WD.map(function (n, i) { return '<button type="button" data-act="off" data-d="' + i + '" aria-pressed="' + (s.off.indexOf(i) >= 0) + '">' + n.slice(0, 3) + '</button>'; }).join('') + '</div></div>' +
       '<div class="set-row stack"><span>Workouts per week</span><div class="seg">' + [3, 4, 5].map(function (n) { return '<button type="button" data-act="perweek" data-n="' + n + '" aria-pressed="' + (s.perWeek === n) + '">' + n + '</button>'; }).join('') + '</div></div></div>' +
       '<p class="sub" style="margin:8px 4px 0">Change these when your shift changes. The plan rearranges itself.</p>';
+    out += '<div class="lab">Look</div><div class="grp"><div class="set-row stack"><span>Theme</span><div class="seg">' + [['light', 'Light'], ['dark', 'Dark'], ['auto', 'Match phone']].map(function (o) { return '<button type="button" data-act="theme" data-v="' + o[0] + '" aria-pressed="' + ((S.theme || 'light') === o[0]) + '">' + o[1] + '</button>'; }).join('') + '</div></div></div>';
     out += '<div class="lab">My gym</div><div class="grp">' +
       '<label class="set-row" for="g-sel"><span>Training at</span><select id="g-sel" class="fi" style="width:auto;max-width:210px">' + S.gyms.map(function (g) { return '<option value="' + g.id + '"' + (g.id === S.gym ? ' selected' : '') + '>' + esc(g.name) + '</option>'; }).join('') + '</select></label>' +
       '<label class="set-row" for="g-name"><span>Rename</span><input id="g-name" class="fi" value="' + esc(gymName(S.gym)) + '"></label>' +
@@ -791,7 +792,12 @@ nav.tabs { position: fixed; inset-inline: 0; bottom: 0; background: var(--bg); b
   }
 
   /* ---------- render ---------- */
+  function applyTheme() {
+    var t = S.theme === 'dark' || S.theme === 'auto' ? S.theme : 'light', r = document.documentElement;
+    if (t === 'auto') r.removeAttribute('data-theme'); else r.setAttribute('data-theme', t);
+  }
   function render() {
+    applyTheme();
     var v = $('#view');
     var html = V.run ? renderWork() : V.tab === 'plan' ? renderPlan() : V.tab === 'prog' ? renderProg() : V.tab === 'food' ? renderFood() : renderSet();
     var keep = window.scrollY;
@@ -945,6 +951,7 @@ nav.tabs { position: fixed; inset-inline: 0; bottom: 0; background: var(--bg); b
     else if (act === 'ms-del') { if (V.confirm === b.dataset.key) { S.measures = S.measures.filter(function (x) { return x.d !== b.dataset.d; }); V.confirm = null; save(); } else { V.confirm = b.dataset.key; render(); } }
     else if (act === 'ses-del') { if (V.confirm === b.dataset.key) { S.sessions = S.sessions.filter(function (x) { return String(x.i) !== b.dataset.i; }); V.confirm = null; V.keepScroll = true; save(); } else { V.confirm = b.dataset.key; render(); } }
     else if (act === 'meals') { S.prof.meals = +b.dataset.m; V.keepScroll = true; save(); }
+    else if (act === 'theme') { S.theme = b.dataset.v; V.keepScroll = true; save(); }
     else if (act === 'shift') { S.set.shift = b.dataset.v; V.keepScroll = true; save(); }
     else if (act === 'perweek') { S.set.perWeek = +b.dataset.n; V.keepScroll = true; save(); }
     else if (act === 'off') {
