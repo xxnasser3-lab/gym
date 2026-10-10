@@ -1,5 +1,5 @@
 /* Offline shell: the app works without internet after the first visit. Bump VERSION when index.html changes. */
-var VERSION = 'gym-planner-v4';
+var VERSION = 'gym-planner-v5';
 var CORE = ['./', 'index.html', 'manifest.webmanifest', 'icons/icon-192.png', 'icons/icon-512.png', 'icons/apple-touch-icon.png'];
 self.addEventListener('install', function (e) {
   e.waitUntil(caches.open(VERSION).then(function (c) { return c.addAll(CORE); }).then(function () { return self.skipWaiting(); }));
