@@ -302,24 +302,26 @@ var BODY = (function () {
 
   /* ---------- program ---------- */
   var PROGRAM = {
-    A: { label: 'Squat day', focus: 'Legs, chest, back, shoulders, arms', mins: 72, ex: [
+    A: { label: 'Squat day', focus: 'Legs, chest, back, shoulders, arms', mins: 77, ex: [
       { id: 'a1', name: 'Squat (Barbell)', sets: 3, full: 4, lo: 6, hi: 8, rest: 150, inc: 5, tip: 'Sit down until thighs are parallel or lower. Back tight, knees over toes. Three sets for now, the fourth comes back after two weeks.' },
       { id: 'a2', name: 'Incline Chest Press (Machine)', sets: 3, lo: 8, hi: 10, rest: 120, inc: 2.5, tip: 'Lower for two seconds. Do not lock the elbows.' },
       { id: 'a3', name: 'Lat Pulldown (Cable), wide grip', sets: 3, lo: 10, hi: 12, rest: 90, inc: 2.5, tip: 'Pull the elbows toward your pockets, bar to the upper chest, chest up.' },
       { id: 'a4', name: 'Seated Row (Cable)', sets: 3, lo: 10, hi: 12, rest: 90, inc: 2.5, tip: 'Elbows back, squeeze the shoulder blades, no swinging.' },
       { id: 'a5', name: 'Lateral Raise (Cable)', sets: 4, lo: 12, hi: 15, rest: 60, inc: 1.25, tip: 'Light and controlled. Raise to shoulder height only. If no smaller weight exists, add reps instead.' },
       { id: 'a6', name: 'Face Pull (Cable)', sets: 3, lo: 15, hi: 20, rest: 60, inc: 2.5, tip: 'Rope at face height, pull toward the forehead, elbows wide.' },
-      { id: 'a7', name: 'Bicep Curl (Cable)', sets: 3, lo: 10, hi: 12, rest: 60, inc: 2.5, tip: 'Elbows fixed by your sides.' },
-      { id: 'a8', name: 'Triceps Extension (Cable)', sets: 3, lo: 10, hi: 12, rest: 60, inc: 2.5, tip: 'Elbows fixed, full range.' }
+      { id: 'a10', name: 'Incline Dumbbell Curl', sets: 3, lo: 10, hi: 12, rest: 60, inc: 2, tip: 'Bench at about 60 degrees, arms hanging behind the body. Curl without moving the elbows. Leave 1 to 3 reps in the tank.' },
+      { id: 'a8', name: 'Overhead Triceps Extension (Cable)', sets: 3, lo: 10, hi: 12, rest: 60, inc: 2.5, tip: 'Hands over and behind the head, elbows pointing forward. Full stretch at the bottom. Leave 1 to 3 reps in the tank.' },
+      { id: 'a9', name: 'Cable Fly', sets: 3, lo: 12, hi: 15, rest: 60, inc: 2.5, tip: 'Slight bend in the elbows, bring the hands together in front of the chest, slow stretch on the way back.' }
     ]},
-    B: { label: 'Deadlift day', focus: 'Back, shoulders, arms', mins: 72, ex: [
+    B: { label: 'Deadlift day', focus: 'Back, shoulders, hamstrings, arms', mins: 78, ex: [
       { id: 'b1', name: 'Deadlift (Barbell)', sets: 2, full: 3, lo: 5, hi: 6, rest: 180, inc: 5, tip: 'Neutral back, bar close to the legs. Two sets for now, stop with 2 reps left, the third set returns after two weeks.' },
       { id: 'b2', name: 'Overhead Press (Barbell)', sets: 3, lo: 6, hi: 8, rest: 150, inc: 2.5, tip: 'Tight belly and glutes, do not arch the back, bar passes close to the face.' },
       { id: 'b3', name: 'Lat Pulldown (Cable), neutral grip', sets: 3, lo: 8, hi: 10, rest: 90, inc: 2.5, tip: 'Pull the elbows down and back.' },
+      { id: 'b9', name: 'Seated Leg Curl (Machine)', sets: 3, lo: 10, hi: 12, rest: 90, inc: 2.5, tip: 'Lower for three seconds, hips stay on the seat.' },
       { id: 'b4', name: 'Lateral Raise (Dumbbell)', sets: 4, lo: 12, hi: 15, rest: 60, inc: 2, tip: 'Dumbbells to shoulder height, no swinging.' },
       { id: 'b5', name: 'Rear Delt Fly (Machine)', sets: 3, lo: 12, hi: 15, rest: 60, inc: 2.5, tip: 'Slow, feel it in the rear shoulder, not the back.' },
       { id: 'b6', name: 'Preacher Curl (Machine)', sets: 3, lo: 10, hi: 12, rest: 60, inc: 2.5, tip: 'Lower slowly, do not drop the weight.' },
-      { id: 'b7', name: 'Triceps Extension (Cable)', sets: 3, lo: 10, hi: 12, rest: 60, inc: 2.5, tip: 'Elbows fixed, full range.' }
+      { id: 'b8', name: 'Triceps Pushdown (Cable)', sets: 3, lo: 10, hi: 12, rest: 60, inc: 2.5, tip: 'Elbows fixed by your sides, full range. Leave 1 to 3 reps in the tank.' }
     ]},
     C: { label: 'Leg press day', focus: 'Legs, back, rear delts, arms', mins: 77, ex: [
       { id: 'c1', name: 'Leg Press', sets: 3, lo: 10, hi: 12, rest: 120, inc: 5, tip: 'Feet mid-platform, hips stay on the seat, do not lock the knees.' },
@@ -331,20 +333,21 @@ var BODY = (function () {
       { id: 'c7', name: 'Bicep Curl (Barbell)', sets: 3, lo: 8, hi: 10, rest: 60, inc: 2.5, tip: 'No swinging from the back.' },
       { id: 'c8', name: 'Triceps Pushdown (Cable)', sets: 3, lo: 10, hi: 12, rest: 60, inc: 2.5, tip: 'Elbows fixed by your sides.' }
     ]},
-    D: { label: 'Hack squat day', focus: 'Legs, chest, back, arms', mins: 67, ex: [
+    D: { label: 'Hack squat day', focus: 'Legs, chest, back, arms', mins: 72, ex: [
       { id: 'd1', name: 'Hack Squat', sets: 3, lo: 8, hi: 10, rest: 150, inc: 5, tip: 'Lower with control to 90 degrees or deeper, push through the heels.' },
       { id: 'd2', name: 'Chest Press (Machine)', sets: 3, lo: 10, hi: 12, rest: 120, inc: 2.5, tip: 'Lower slowly, do not lock the elbows.' },
       { id: 'd3', name: 'T-Bar Row', sets: 3, lo: 8, hi: 10, rest: 120, inc: 2.5, tip: 'Back stays still, pull the elbows back.' },
       { id: 'd4', name: 'Lateral Raise (Cable)', sets: 3, lo: 12, hi: 15, rest: 60, inc: 1.25, tip: 'Light and controlled, up to shoulder height.' },
       { id: 'd5', name: 'Cable Crunch', sets: 3, lo: 12, hi: 15, rest: 60, inc: 2.5, tip: 'Crunch with the abs, not the arms. Hips stay still.' },
       { id: 'd6', name: 'Bicep Curl (Cable)', sets: 3, lo: 10, hi: 12, rest: 60, inc: 2.5, tip: 'Elbows fixed by your sides.' },
-      { id: 'd7', name: 'Triceps Extension (Cable)', sets: 3, lo: 10, hi: 12, rest: 60, inc: 2.5, tip: 'Elbows fixed, full range.' }
+      { id: 'd7', name: 'Overhead Triceps Extension (Cable)', sets: 3, lo: 10, hi: 12, rest: 60, inc: 2.5, tip: 'Hands over and behind the head, elbows pointing forward. Full stretch at the bottom. Leave 1 to 3 reps in the tank.' },
+      { id: 'd8', name: 'Cable Fly', sets: 3, lo: 12, hi: 15, rest: 60, inc: 2.5, tip: 'Slight bend in the elbows, bring the hands together in front of the chest, slow stretch on the way back.' }
     ]}
   };
   var DAYS = ['A', 'B', 'C', 'D'];
   var EX = {};
   /* Key lifts: the ones that build shoulder and back width, which is what makes the V-shape. Done first on a tired day. */
-  var KEYS = ['a2', 'a3', 'a4', 'a5', 'a7', 'a8', 'b2', 'b3', 'b4', 'b5', 'b6', 'b7', 'c2', 'c4', 'c5', 'c7', 'c8', 'd2', 'd3', 'd4', 'd6', 'd7'];
+  var KEYS = ['a2', 'a3', 'a4', 'a5', 'a10', 'a8', 'b2', 'b3', 'b4', 'b5', 'b6', 'b8', 'c2', 'c4', 'c5', 'c7', 'c8', 'd2', 'd3', 'd4', 'd6', 'd7'];
   DAYS.forEach(function (d) { PROGRAM[d].ex.forEach(function (e) { e.day = d; e.key = KEYS.indexOf(e.id) >= 0; EX[e.id] = e; }); });
   var GOALS = {
     recomp: { label: 'Lean and shape (recomp)', off: -250, rate: [-0.30, 0.10] },
@@ -681,7 +684,10 @@ var BODY = (function () {
     'Lateral Raise (Cable)': [['shoulders'], []],
     'Face Pull (Cable)': [['reardelts'], ['traps', 'midback']],
     'Bicep Curl (Cable)': [['biceps'], []],
-    'Triceps Extension (Cable)': [['triceps'], []],
+    'Overhead Triceps Extension (Cable)': [['triceps'], []],
+    'Incline Dumbbell Curl': [['biceps'], []],
+    'Cable Fly': [['chest'], ['shoulders']],
+    'Seated Leg Curl (Machine)': [['hamstrings'], ['calves']],
     'Deadlift (Barbell)': [['glutes', 'hamstrings', 'lowback'], ['traps', 'quads', 'lats']],
     'Overhead Press (Barbell)': [['shoulders'], ['triceps', 'chest', 'traps']],
     'Lat Pulldown (Cable), neutral grip': [['lats'], ['biceps', 'midback']],
@@ -699,7 +705,7 @@ var BODY = (function () {
     'T-Bar Row': [['midback', 'lats'], ['reardelts', 'biceps', 'lowback']],
     'Cable Crunch': [['abs'], ['obliques']]
   };
-  var PHOTO = {"Squat (Barbell)":"Barbell_Full_Squat","Incline Chest Press (Machine)":"Leverage_Incline_Chest_Press","Lat Pulldown (Cable), wide grip":"Wide-Grip_Lat_Pulldown","Seated Row (Cable)":"Seated_Cable_Rows","Lateral Raise (Cable)":"Cable_Seated_Lateral_Raise","Face Pull (Cable)":"Face_Pull","Bicep Curl (Cable)":"Standing_Biceps_Cable_Curl","Triceps Extension (Cable)":"Cable_Rope_Overhead_Triceps_Extension","Deadlift (Barbell)":"Barbell_Deadlift","Overhead Press (Barbell)":"Standing_Military_Press","Lat Pulldown (Cable), neutral grip":"Close-Grip_Front_Lat_Pulldown","Lateral Raise (Dumbbell)":"Side_Lateral_Raise","Rear Delt Fly (Machine)":"Reverse_Machine_Flyes","Preacher Curl (Machine)":"Machine_Preacher_Curls","Leg Press":"Leg_Press","Seated Row (Machine)":"Leverage_Iso_Row","Lying Leg Curl (Machine)":"Lying_Leg_Curls","Standing Calf Raise (Machine)":"Standing_Calf_Raises","Bicep Curl (Barbell)":"Barbell_Curl","Triceps Pushdown (Cable)":"Triceps_Pushdown","Hack Squat":"Hack_Squat","Chest Press (Machine)":"Leverage_Chest_Press","T-Bar Row":"T-Bar_Row_with_Handle","Cable Crunch":"Cable_Crunch"};
+  var PHOTO = {"Squat (Barbell)":"Barbell_Full_Squat","Incline Chest Press (Machine)":"Leverage_Incline_Chest_Press","Lat Pulldown (Cable), wide grip":"Wide-Grip_Lat_Pulldown","Seated Row (Cable)":"Seated_Cable_Rows","Lateral Raise (Cable)":"Cable_Seated_Lateral_Raise","Face Pull (Cable)":"Face_Pull","Bicep Curl (Cable)":"Standing_Biceps_Cable_Curl","Overhead Triceps Extension (Cable)":"Cable_Rope_Overhead_Triceps_Extension","Incline Dumbbell Curl":"Incline_Dumbbell_Curl","Cable Fly":"Cable_Crossover","Seated Leg Curl (Machine)":"Seated_Leg_Curl","Deadlift (Barbell)":"Barbell_Deadlift","Overhead Press (Barbell)":"Standing_Military_Press","Lat Pulldown (Cable), neutral grip":"Close-Grip_Front_Lat_Pulldown","Lateral Raise (Dumbbell)":"Side_Lateral_Raise","Rear Delt Fly (Machine)":"Reverse_Machine_Flyes","Preacher Curl (Machine)":"Machine_Preacher_Curls","Leg Press":"Leg_Press","Seated Row (Machine)":"Leverage_Iso_Row","Lying Leg Curl (Machine)":"Lying_Leg_Curls","Standing Calf Raise (Machine)":"Standing_Calf_Raises","Bicep Curl (Barbell)":"Barbell_Curl","Triceps Pushdown (Cable)":"Triceps_Pushdown","Hack Squat":"Hack_Squat","Chest Press (Machine)":"Leverage_Chest_Press","T-Bar Row":"T-Bar_Row_with_Handle","Cable Crunch":"Cable_Crunch"};
   function photos(ex) {
     var f = PHOTO[ex.name];
     if (!f) return '';
@@ -784,7 +790,10 @@ var BODY = (function () {
     'Lateral Raise (Cable)': ['Stand sideways to the cable, handle in the far hand, slight bend in the elbow.', 'Raise the arm out to the side up to shoulder height, lead with the elbow, lower slowly.', 'Going heavy, swinging the body, lifting above shoulder height, shrugging.'],
     'Face Pull (Cable)': ['Rope at face height. Step back until the cable is tight, feet shoulder width.', 'Pull the rope toward your forehead, hands split apart, elbows high and wide. Squeeze the rear shoulders, return slowly.', 'Elbows dropping low, leaning back to cheat, too much weight.'],
     'Bicep Curl (Cable)': ['Stand close to the cable, elbows glued to your sides.', 'Curl the handle up until your biceps are fully squeezed, lower for two seconds.', 'Swinging the body, elbows drifting forward, dropping the weight fast.'],
-    'Triceps Extension (Cable)': ['Face the cable, elbows tucked in and pointing forward or down.', 'Straighten the arms fully, squeeze the triceps, return slowly until you feel a stretch.', 'Elbows flaring out or moving, using the shoulders, short half reps.'],
+    'Overhead Triceps Extension (Cable)': ['Cable at the lowest setting with a rope. Face away from the machine, hands behind the head, elbows pointing forward, one foot ahead for balance.', 'Straighten the arms fully over the head, squeeze the triceps, then lower slowly until you feel a deep stretch behind the arms.', 'Elbows flaring out, arching the lower back, short half reps, using the shoulders.'],
+    'Incline Dumbbell Curl': ['Bench at about 60 degrees, back flat on the pad, arms hanging straight down behind the body.', 'Curl both dumbbells up without moving the elbows, squeeze the biceps, lower slowly to a full stretch.', 'Elbows swinging forward, lifting the shoulders off the pad, dropping the weight fast.'],
+    'Cable Fly': ['Handles at chest height, one foot forward, a slight bend in the elbows that stays fixed.', 'Bring the hands together in front of the chest in a hugging arc, squeeze, then open slowly until you feel a stretch in the chest.', 'Bending and straightening the elbows like a press, shrugging, going too heavy.'],
+    'Seated Leg Curl (Machine)': ['Sit with your back against the pad, thigh pad snug on top of the legs, ankles on top of the lower pad.', 'Curl the heels down and back, squeeze, then return slowly for three seconds without letting the weight stack touch.', 'Lifting the hips off the seat, jerking the weight, short reps.'],
     'Deadlift (Barbell)': ['Bar over the middle of your feet, grip just outside the knees. Hips down, chest up, back flat and tight.', 'Push the floor away with your legs, keep the bar touching your legs, stand tall and squeeze the glutes. Lower the same way.', 'Rounding the back, the bar drifting away from you, jerking the bar off the floor, leaning back at the top.'],
     'Overhead Press (Barbell)': ['Bar at collarbone height, grip just outside the shoulders, elbows slightly in front. Squeeze glutes and belly.', 'Press straight up, head moves back slightly then forward as the bar passes. Finish with the bar over your mid-foot.', 'Leaning back, flaring the ribs, pressing the bar out in front of you.'],
     'Lat Pulldown (Cable), neutral grip': ['Use the V-handle so your palms face each other. Chest up, slight lean back.', 'Pull the elbows down and back, handle to the upper chest, squeeze, return slowly to a full stretch.', 'Swinging, pulling with the hands instead of the elbows, shrugging.'],
